@@ -7,5 +7,7 @@ export async function loader({ request }: { request: Request }) {
 }
 
 export default function Dashboard() {
-    return null;
+    return (
+        <div>Hello Dashboard</div>
+    );
 }   
