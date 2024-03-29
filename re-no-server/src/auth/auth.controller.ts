@@ -1,71 +1,19 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
-import * as argon from 'argon2';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 
-@Injectable()
-export class AuthService {
-  constructor(
-    private prisma: PrismaService,
-    private jwt: JwtService,
-    private config: ConfigService,
-  ) {}
+@Controller('auth')
+export class AuthController {
+  constructor(private authService: AuthService) {}
 
-  async signup(dto: AuthDto) {
-    const password = await argon.hash(dto.password);
-
-    try {
-      const user = await this.prisma.user.create({
-        data: {
-          email: dto.email,
-          password,
-        },
-      });
-      return this.signToken(user.id, user.email);
-    } catch (error) {
-      if (error.code === 'P2002') {
-        throw new ForbiddenException('Credentials taken');
-      }
-
-      throw error;
-    }
+  @Post('signup')
+  signup(@Body() dto: AuthDto) {
+    return this.authService.signup(dto);
   }
 
-  async signin(dto: AuthDto) {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        email: dto.email,
-      },
-    });
-    if (!user) {
-      throw new ForbiddenException('Credentials incorrect');
-    }
-    const passwordMatches = await argon.verify(user.password, dto.password);
-    if (!passwordMatches) {
-      throw new ForbiddenException('Credentials incorrect');
-    }
-    return this.signToken(user.id, user.email);
-  }
-  async signToken(
-    userId: number,
-    email: string,
-  ): Promise<{ acces_token: string; email: string }> {
-    const payload = {
-      sub: userId,
-      email,
-    };
-    const secret = this.config.get('JWT_SECRET');
-
-    const token = await this.jwt.signAsync(payload, {
-      expiresIn: '120m',
-      secret,
-    });
-
-    return {
-      acces_token: token,
-      email: email,
-    };
+  @HttpCode(HttpStatus.OK)
+  @Post('signin')
+  signin(@Body() dto: AuthDto) {
+    return this.authService.signin(dto);
   }
 }
