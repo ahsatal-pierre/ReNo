@@ -1,5 +1,5 @@
 # ReNo
-React - Node template
+React - Node (Nest) template
 
 # start frontend: 
 - npm install
