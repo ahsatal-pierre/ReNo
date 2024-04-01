@@ -24,7 +24,7 @@ export async function action({ request, params}: { request: Request, params: Par
     const editTaskFormData = await request.formData()
     const title = (editTaskFormData.get('title') ?? '') as string;
     const overview = (editTaskFormData.get('overview') ?? '') as string;
-    const done = (editTaskFormData.get('done') ?? '') as unknown as boolean;
+    const done = editTaskFormData.has('done'); 
     const search = (editTaskFormData.get('search') ?? '') as string;
     const pathname = (editTaskFormData.get('pathname') ?? '') as string;
     
@@ -83,9 +83,9 @@ export default function TaskEdit() {
                     />
                     <input 
                     name="done"
-                    type="text"
+                    type="checkbox"
                     placeholder="is done or not"
-                    // defaultValue={done}
+                    defaultChecked={done}
                     />
                     <textarea  
                     name="overview"

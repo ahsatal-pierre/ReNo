@@ -33,6 +33,7 @@ export default function Tasks() {
                 <div className="">
                     <h4>{i + 1}.</h4>
                     <h4 className="">{task.title}</h4>
+                    <span>{task.done ? "✔️" : "❌"}</span>
                 </div>
             </Link>
         ));

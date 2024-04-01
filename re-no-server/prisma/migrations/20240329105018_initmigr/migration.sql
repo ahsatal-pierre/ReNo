@@ -18,7 +18,7 @@ CREATE TABLE "tasks" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "title" TEXT NOT NULL,
     "overview" TEXT,
-    "done" BOOLEAN NOT NULL,
+    "done" BOOLEAN,
     "userId" INTEGER NOT NULL,
 
     CONSTRAINT "tasks_pkey" PRIMARY KEY ("id")
