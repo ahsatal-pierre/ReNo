@@ -82,6 +82,7 @@ export default function TaskEdit() {
                     defaultValue={title}
                     />
                     <input 
+                    className="checkbox"
                     name="done"
                     type="checkbox"
                     placeholder="is done or not"

@@ -50,33 +50,38 @@ export default function TaskCreate() {
   return (
     <div className="">
       <Link to={`${pathname + search}`}>&larr; Back</Link>
-      <div className="">
-        <Form className="" replace method="post">
-          <input
-            name="title"
-            type="text"
-            placeholder="Title"
-            defaultValue={title}
-          />
-          <textarea
-            name="overview"
-            placeholder="Description"
-            defaultValue={overview}
-          />
-          <input
-            name="done"
-            type="checkbox"
-            placeholder="is done or not"
-            defaultChecked={done}
-          />
-          <input hidden name="search" defaultValue={search} />
-          <input hidden name="pathname" defaultValue={pathname} />
-          <button className="" type="submit">
-            Add
-          </button>
-        </Form>
-        {actionDataError && <ActionDataError error={actionDataError} />}
-      </div>
+
+      <Form replace method="post">
+        <div className="field">
+          <div className="control">
+            <input
+              name="title"
+              type="text"
+              placeholder="Title"
+              defaultValue={title}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <div  className="control">
+            <textarea
+            // className="textarea"
+              name="overview"
+              placeholder="Description"
+              defaultValue={overview}
+            />
+          </div>
+        </div>
+        <input hidden name="search" defaultValue={search} />
+        <input hidden name="pathname" defaultValue={pathname} />
+        <button className="" type="submit">
+          Add
+        </button>
+      </Form>
+      {actionDataError && <ActionDataError error={actionDataError} />}
     </div>
   );
 }
+// function useState(arg0: boolean): [any, any] {
+//   throw new Error("Function not implemented.");
+// }

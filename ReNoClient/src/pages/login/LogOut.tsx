@@ -20,23 +20,21 @@ export default function Logout() {
     return (
         <>
             {!user && ( 
-                <div className="">
-                    <NavLink to='signIn'>
+                <div className="navbar">
+                    <NavLink to='signIn' className={"navbar-item"}>
                         Log In
                     </NavLink>
-                    <NavLink to='signUp'>
+                    <NavLink to='signUp' className={"navbar-item"}>
                         Sign Up
                     </NavLink>
                 </div>
             )}
             {user && (
-                <div className="">
+                <div className="navbar">
                     <div className="">
-                        {user.charAt(0).toUpperCase()}
-                    </div>
-                    <div className="">
-                        <span>{user}</span>
+                        <span>{user}, do you want to: </span>
                         <button onClick={handleLogout}>Log Out</button>
+                        <span> ?</span>
                     </div>
                 </div>
             )}
