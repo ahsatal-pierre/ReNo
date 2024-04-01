@@ -25,7 +25,7 @@ export default function Tasks() {
     function renderTasks(tasks: TaskData[]) {
         const taskElements = tasks.map((task, i) => (
             <Link
-                className=" "
+                className=""
                 key={task.id}
                 to={`${task.id}`}
                 state={{ pathname, search: `?${searchParams.toString()}` }}
@@ -73,7 +73,7 @@ export default function Tasks() {
                         </button>
                     )}
                 </div>
-                <div>{taskElements}</div>
+                <div className="">{taskElements}</div>
             </>
         );
     }

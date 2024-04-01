@@ -96,7 +96,7 @@ export default function TaskEdit() {
                     <input hidden name='search' defaultValue={search} />
                     <input hidden name='pathname' defaultValue={pathname} />
                     <button 
-                        className="" 
+                        className="button" 
                         type="submit"
                     >
                         edit

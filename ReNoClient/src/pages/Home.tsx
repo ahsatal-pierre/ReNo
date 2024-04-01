@@ -9,7 +9,7 @@ export default function Home() {
         <div className=" ">
 
             <div className="">
-                <Link className="" to="/tasks/create">Create a task</Link>
+                <Link className="" to="/create/tasks">Create a task</Link>
                 <br />
                 <Link className="" to="/tasks">
                 Link to My tasks &rarr;

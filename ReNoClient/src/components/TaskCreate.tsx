@@ -49,7 +49,7 @@ export default function TaskCreate() {
 
   return (
     <div className="">
-      <Link to={`${pathname + search}`}>&larr; Back</Link>
+      <Link to={`${pathname + search}`} relative='path'>&larr; Back</Link>
 
       <Form replace method="post">
         <div className="field">
@@ -74,7 +74,7 @@ export default function TaskCreate() {
         </div>
         <input hidden name="search" defaultValue={search} />
         <input hidden name="pathname" defaultValue={pathname} />
-        <button className="" type="submit">
+        <button className="button" type="submit">
           Add
         </button>
       </Form>

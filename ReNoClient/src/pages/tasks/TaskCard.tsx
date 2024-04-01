@@ -37,15 +37,15 @@ export default function TaskCard() {
                 </Link>
                 <div className="">
                     <Link 
-                        className="" 
+                        className="button" 
                         to="edit" 
                         state={{ pathname, search}}
                     >
                         Edit
                     </Link>
                     <Link 
-                        className="" 
-                        to="" 
+                        className="button" 
+                        to="delete" 
                         state={{ pathname, search}}
                     >
                         Delete
